@@ -1,0 +1,50 @@
+Version 0.0.4 (August 16, 2010)
+
+- Additional source comments - August 16, 2010
+- Tested on top popular browsers and different OS - August 15, 2010
+    - Firefox - 3.6.8 (Ubuntu 10.04, Windows 7, Windows XP [SP2] and Windows XP [SP3])
+    - Chrome - 5.0.375.126 (Ubuntu 10.04, Windows 7, Windows XP [SP2] and Windows XP [SP3])
+    - Internet Explorer 8 - 8.0.x.x (Windows 7)
+    - Internet Explorer 7 - 7.0.x.x (Windows XP [SP3])
+    - Internet Explorer 6 - 6.0.x.x (Windows XP [SP2])
+    - Safari 4.0 - 4.0 (530.17) (Windows XP [SP2])
+    - Safari 5.0.1 - 5.0.1 (7533.17.8) (Windows XP [SP3])
+    - Opera 9.x - 9.01 (8552) (Windows XP [SP2])
+    - Opera 10.x - 10.61 (3484) (Windows XP [SP3])
+- Browser compatibility test using IETester 0.4.4 (under Windows XP [SP2]) - Passed IE6 and IE7 tests. - August 15, 2010
+- IE7 and some Chrome bug fix - August 15, 2010
+- Modified "default" theme - August 13, 2010  
+- IE6 bug fix - August 13, 2010
+
+Version 0.0.3 (July 17, 2010)
+
+- Added "Rave" theme - July 16, 2010
+- Updated "Vista" theme - July 16, 2010
+- Element IDs been replaced. (Issue 25 - http://code.google.com/p/jixedbar/issues/detail?id=25#c0) - July 14, 2010
+- Rounded corner as defaults - July 14, 2010
+- Removed hover effect (issue with "slideToggle" caused by jQuery "stop" method) - July 12, 2010
+- Replaced hover effect with "transparent" option - July 12, 2010
+- Added "showOnTop" option to place bar on top - July 11, 2010
+- Updated jQuery version (1.3.2 -> 1.4.2) - July 11, 2010
+- Bug fix: Arrow indicator alignment on Chrome (float right) - July 9, 2010
+- Bug fix: Tooltip center alignment - July 2, 2010
+- Cookie based hide/show function (save bar's show/hide state) - July 1, 2010
+- Added tooltip on "Hide/Show" button - June 24, 2010
+- Prevent menu item container from showing if no active menu selected - June 24, 2010
+- Bar and menu, auto sync hide/show (up/down arrow) - June 24, 2010
+- Hide/show function - June 24, 2010
+- Improved tooltip - June 23, 2010
+- Button menu indicator (up/down arrow) - June 23, 2010
+- Menu items (first level) - June 22, 2010
+- Modified html and body css style on load: Fixed overlapping and double scroll bar. - January 6, 2010
+- Added windows resize event handler: Adjust bar's position on window resize. - January 6, 2010
+
+Version 0.0.2 (December 18, 2009)
+
+- Use img alt attribute as button text.
+- Fixed PNG transparency issue on IE6 browser.
+- Added "vista" theme.
+
+Version 0.0.1 (December 15, 2009)
+
+- Initial beta release.

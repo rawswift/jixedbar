@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* 
+ * CSS Document - Demo
+ */
+
+h1 {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:16px;
+	color:#999;
+}
+
+h2 {
+	font-size:16px;
+	color:#333;
+}
+
+pre {
+	padding:10px;
+	background-color:#fefed8;
+	border:#eee solid 1px;
+	font-family:'Courier New', Courier, monospace;
+	font-size:11px;
+}
+
+a:link, a:visited {
+	color:#0066FF;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#0066FF;
+	text-decoration:underline;
+}
+
+table {
+	width:100%;
+	border:#ccc solid 1px;
+	border-collapse:collapse;
+}
+
+table th {
+	background-color:#0099FF;
+	text-align:left;
+	color:#fff;
+	font-weight:bold;
+}
+
+table th, table td {
+	padding:4px;
+}
+
+#header {
+	padding:5px;
+	background-color:#666;
+	border-bottom:#ccc solid 2px;
+	height:20px;
+}
+
+	#version {
+		float:right;
+		padding:3px;
+		margin-right:40px;
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:12px;
+		color:#ccc;
+	}
+
+#content {
+	margin-left:auto;
+	margin-right:auto;
+	width:1050px;
+	padding:30px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+.ital {
+	font-style:italic;
+}
+
+.code {
+	font-family:"Courier New", Courier, monospace;
+}

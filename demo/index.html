@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jixedbar (Beta) - a jQuery fixed bar plugin</title>
+<link type="text/css" href="css/demo.css" rel="stylesheet" />
+
+<!-- jixedbar starts here -->
+<link type="text/css" href="../themes/default/jx.stylesheet.css" rel="stylesheet" />
+<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../src/jquery.jixedbar.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+		$("#demo-bar").jixedbar();
+    }); 
+</script>
+<!-- jixedbar ends here -->
+
+</head>
+<body>
+
+<div id="header">
+    <div id="version">Version: 0.0.4</div>
+</div>
+
+<div id="content">
+
+<h1><span style="color:#00CC33;">jixedbar</span> (Beta) - a jQuery fixed bar plugin. <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; text-decoration:none; font-weight:normal;">(<a href="http://code.google.com/p/jixedbar/">http://code.google.com/p/jixedbar/</a>)</span></h1>
+
+<span style="color:#999;">Last update: August 16, 2010</span>
+
+<div id="rel-note" style="margin-top:10px;background-color:#F1FFD6;border:#eee solid 1px;padding-left:30px;padding-right:30px;">
+	<h2>Release Notes</h2>
+	<ul>
+		<li>This release includes mostly Internet Explorer (IE) fixes. (IE6 and IE7 compatibility issues)</li>
+		<li>Compatibility tests using the top popular browsers in different OS. (see CHANGELOG for browser and OS list)</li>
+		<li>Also tested using IETester 0.4.4 (under Windows XP [SP2]) - Passed IE6 and IE7 tests.</li>
+		<li>Only the "default" theme are fully tested to work in release. (See note on "rave" and "vista" theme)</li>
+	</ul>
+</div>
+
+<h2>Overview</h2>
+<p><strong>jixedbar</strong> is a jQuery plugin that lets you fix a horizontal bar at the bottom of your website or web application. This project was inspired by <a href="http://www.facebook.com/">Facebook</a>’s fixed application/menu bar.</p>
+
+<h2>How-to</h2>
+
+<ol>
+	<li>Get the latest copy of jixedbar, you can get it in two(2) ways:
+    
+		<ol style="list-style:lower-alpha;">
+			<li>Project's <a href="http://code.google.com/p/jixedbar/downloads/list">download page</a> (the easy way).</li>
+			<li>or checkout the source code at <a href="http://code.google.com/p/jixedbar/source/checkout">Google Subversion (SVN) repository</a>:
+<pre>
+   svn checkout http://jixedbar.googlecode.com/svn/trunk/ jixedbar
+</pre>
+			</li>
+		</ol>
+	</li>            
+	<li>Extract or copy the source on your web root then include this simple codes inside your HTML Head:
+<pre>
+&lt;link type=&quot;text/css&quot; href=&quot;/path/to/themes/default/jx.stylesheet.css&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/jquery-1.4.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/path/to/src/jquery.jixedbar.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type="text/javascript&quot;&gt;
+    $(document).ready(function() {
+		$(&quot;#sample-bar&quot;).jixedbar();
+    });
+&lt;/script&gt;
+</pre>
+        <p>Notes:</p>
+        	<ul>
+                <li>This package includes <a href="http://jquery.com/">jQuery</a> 1.4.2. Check for the latest version and if needed replace with the latest version/release.</li>
+				<li>Replace with the appropriate path. (scripts, themes, etc)</li>
+			</ul>
+            
+		<p><strong>Sample bar/menu items</strong></p>
+        
+<pre>
+&lt;div id=&quot;sample-bar&quot;&gt;
+
+   &lt;ul&gt;
+      &lt;li title=&quot;Home&quot;&gt;&lt;a href=&quot;http://your.domain.tld/&quot;&gt;&lt;img src=&quot;img/home.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+
+   &lt;span class=&quot;jx-separator-left&quot;&gt;&lt;/span&gt;
+   
+   &lt;ul&gt;        
+      &lt;li title=&quot;Around The Web&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;img/web.png&quot; alt=&quot;Get Social&quot; /&gt;&lt;/a&gt;
+         &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.facebook.com/account-name&quot;&gt;&lt;img src=&quot;img/facebook.png&quot; title=&quot;Facebook&quot; /&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://twitter.com/account-name&quot;&gt;&lt;img src=&quot;img/twitter.png&quot; title=&quot;Twitter&quot; /&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.flickr.com/photos/account-name/&quot;&gt;&lt;img src=&quot;img/flickr.png&quot; title=&quot;Flickr&quot; /&gt;Flickr&lt;/a&gt;&lt;/li&gt;
+         &lt;/ul&gt;
+      &lt;/li&gt;
+   &lt;/ul&gt;
+   
+   &lt;span class=&quot;jx-separator-left&quot;&gt;&lt;/span&gt;
+   
+   &lt;div&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/div&gt;
+   
+   &lt;ul class=&quot;jx-bar-button-right&quot;&gt;
+      &lt;li title=&quot;Feeds&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;img/feed.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+         &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;http://your.domain.tld/feed/&quot;&gt;&lt;img src=&quot;img/feed.png&quot; title=&quot;Content Feeds&quot; /&gt;Content Feed&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://your.domain.tld/comments/&quot;&gt;&lt;img src=&quot;img/comment.png&quot; title=&quot;Comment Feeds&quot; /&gt;Comment Feed&lt;/a&gt;&lt;/li&gt;
+         &lt;/ul&gt;
+      &lt;/li&gt;
+   &lt;/ul&gt;
+   
+   &lt;span class=&quot;jx-separator-right&quot;&gt;&lt;/span&gt;
+   
+&lt;/div&gt;
+</pre>
+        
+	</li>
+</ol>
+
+<h2>Behaviors</h2>
+<p>You can pass parameters on jixedbar to change how it look and/or behaves.</p>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Option</th>
+			<th>Type</th>
+			<th>Description</th>
+			<th>Default</th>
+		</tr>
+</thead>
+<tbody>
+	<tr>
+    	<td><span class="code">showOnTop</span></td>
+    	<td><span class="ital">Boolean</span></td>
+    	<td>Position the bar on top, instead of the default bottom.</td>
+		<td>false</td>
+    </tr>
+	<tr>
+    	<td><span class="code">transparent</span></td>
+    	<td><span class="ital">Boolean</span></td>
+    	<td>Make the bar transparent.</td>
+		<td>false</td>
+    </tr>
+	<tr>
+    	<td><span class="code">opacity</span></td>
+    	<td><span class="ital">Float</span></td>
+    	<td>Set bar's opacity level. (0.0 ~ 1.0)</td>
+		<td>0.9</td>
+    </tr>
+	<tr>
+    	<td><span class="code">slideSpeed</span></td>
+    	<td><span class="ital">String or Integer</span></td>
+    	<td>Set bar's hide/show slide effect speed. (fast ~ slow or 200 ~ 600)</td>
+		<td>fast</td>
+    </tr>
+	<tr>
+    	<td><span class="code">roundedCorners</span></td>
+    	<td><span class="ital">Boolean</span></td>
+    	<td>Enable or disable bar's rounded corner property.</td>
+		<td>true</td>
+    </tr>
+	<tr>
+    	<td><span class="code">roundedButtons</span></td>
+    	<td><span class="ital">Boolean</span></td>
+    	<td>Enable or disable button's rounded corner property.</td>
+		<td>true</td>
+    </tr>
+	<tr>
+    	<td><span class="code">menuFadeSpeed</span></td>
+    	<td><span class="ital">String or Integer</span></td>
+    	<td>Set menu fade effect speed. (fast ~ slow or 200 ~ 600)</td>
+		<td>250</td>
+    </tr>
+	<tr>
+    	<td><span class="code">tooltipFadeSpeed</span></td>
+    	<td><span class="ital">String or Integer</span></td>
+    	<td>Set tooltip fade effect speed. (fast ~ slow or 200 ~ 600)</td>
+		<td>slow</td>
+    </tr>
+	<tr>
+    	<td><span class="code">tooltipFadeOpacity</span></td>
+    	<td><span class="ital">Float</span></td>
+    	<td>Set tooltip fadeout opacity effect. (0.0 ~ 1.0)</td>
+		<td>0.8</td>
+    </tr>
+</tbody>
+</table>
+
+<p><strong>Example:</strong></p>
+<pre>
+$("#sample-bar").jixedbar({
+    showOnTop: true,
+    transparent: true,
+    opacity: 0.5,
+    slideSpeed: "slow",
+    roundedCorners: false,
+    roundedButtons: false,
+    menuFadeSpeed: "slow",
+    tooltipFadeSpeed: "fast",
+    tooltipFadeOpacity: 0.5
+});
+</pre>
+
+<h2>Themes/Styles</h2>
+
+<p>You can customize the bar's look/style by modifiying the bundled theme. Choose the theme that you want to modify (under "themes" directory) and edit the "jx.bar.css" stylesheet file. Also you can create your own by copying from one of the existing theme (for reference) and save it under "themes" directory with a different theme name.</p>
+
+<p><strong>CSS Class Reference:</strong></p>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>Class</th>
+			<th>Description</th>
+		</tr>
+</thead>
+<tbody>
+	<tr>
+    	<td><span class="code">jx-bar</span></td>
+    	<td>Style for the main bar</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar span</span></td>
+    	<td>Separators. (width, background-color)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-separator-left</span></td>
+    	<td>Separator's position. (float left)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-separator-right</span></td>
+    	<td>Separator's position. (float right)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar-button li</span></td>
+    	<td>Defines bar's button style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar-button li:hover</span></td>
+    	<td>Button hover effect.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar-button li a:*</span></td>
+    	<td>Button's anchor text style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar-button-tooltip</span></td>
+    	<td>Button's tooltip style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar div</span></td>
+    	<td>Text container and arrow indicator style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-bar iframe</span></td>
+    	<td>iframe tag style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-nav-menu</span></td>
+    	<td>Drop up/down menu style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-nav-menu a:hover</span></td>
+    	<td>Menu item hover effect.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-nav-menu ul li a</span></td>
+    	<td>Style for menu items.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-nav-menu-active</span></td>
+    	<td>Style for active button. (button clicked state)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-arrow-up</span></td>
+    	<td>Arrow indicator. (Up state)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-arrow-down</span></td>
+    	<td>Arrow indicator. (Down state)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-tool-point-dir-down</span></td>
+    	<td>Tooltip pointer direction state. (Down state)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-tool-point-dir-up</span></td>
+    	<td>Tooltip pointer direction state. (Up state)</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-hide</span></td>
+    	<td>Hide container style.</td>
+    </tr>
+	<tr>
+    	<td><span class="code">jx-show</span></td>
+    	<td>Show container style.</td>
+    </tr>
+</tbody>
+</table>
+
+<p>You can also change/replace the icons, if you wish to.</p>
+
+<h2>Browser Compatibility</h2>
+<p>Tested to work on Firefox, Chrome and IE8 browsers.</p>
+
+<h2>Support</h2>
+<p>Do you like this project? If Yes, then please show your support by (any of the following):</p>
+
+<ul>
+	<li>Adding a back-link to <a href="http://code.google.com/p/jixedbar/">jixedbar's Google Code page</a>.</li>
+	<li>Got Facebook? Then visit <a href="http://www.facebook.com/jixedbar">jixedbar's Facebook page</a> and simply click the "Like" button.</li>
+	<li>Are you a fellow open source developer with an <a href="http://www.ohloh.net/">Ohloh</a> account? You can rate this project on <a href="http://www.ohloh.net/p/jixedbar">jixedbar's Ohloh page</a> or give the <a href="http://www.ohloh.net/accounts/rawswift">author</a> a "Kudo".</li>
+</ul>
+
+<h2>Credits</h2>
+<ul>
+	<li>Kudos to <a href="http://ejohn.org/">John Resig</a> and the people behind the <a href="http://jquery.com/">jQuery project</a>.</li>
+	<li><a href="http://www.pinvoke.com/">Yusuke Kamiyamane</a> for the beautiful Fugue icons.</li>
+</ul>
+
+<h2>Around the web</h2>
+<p>Find jixedbar around the web:</p>
+<ul>
+	<li>@ <a href="http://code.google.com/p/jixedbar/">Google Code</a></li>
+	<li>Follow this project on <a href="http://twitter.com/jixedbar">Twitter</a></li>
+	<li>Visit <a href="http://www.facebook.com/jixedbar">jixedbar's Facebook page</a></li>
+	<li>Oh no! <a href="https://www.ohloh.net/p/jixedbar">Ohloh</a></li>
+</ul>
+
+<h2>License</h2>
+<p>jixedbar is available for use in all personal or commercial projects under both <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a> and <a href="http://www.gnu.org/licenses/gpl.html">GPL</a> licenses.</p>
+
+</div>
+
+<div id="demo-bar">
+        <ul>
+            <li title="Home"><a href="http://ryan.rawswift.com/"><img src="icons/home.png" alt="" /></a></li>
+        </ul>
+        <span class="jx-separator-left"></span>
+		<ul>        
+            <li title="Around The Web"><a href="#"><img src="icons/network.png" alt="Get Social" /></a>
+                <ul>
+                    <li><a href="http://www.facebook.com/ryanyonzon"><img src="icons/facebook.png" title="Facebook" />&nbsp;&nbsp;&nbsp;Facebook</a></li>
+                    <li><a href="https://twitter.com/rawswift"><img src="icons/twitter.png" title="Twitter" />&nbsp;&nbsp;&nbsp;Twitter</a></li>
+                    <li><a href="http://www.flickr.com/photos/ryanyonzon/"><img src="icons/pictures.png" title="Flickr" />&nbsp;&nbsp;&nbsp;Flickr</a></li>
+                    <li><a href="http://ph.linkedin.com/in/ryanyonzon"><img src="icons/card.png" title="Linkedin" />&nbsp;&nbsp;&nbsp;Linkedin</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="jx-separator-left"></span>
+        <ul>
+            <li title="About"><a href="http://ryan.rawswift.com/about/"><img src="icons/info.png" alt="" /></a></li>
+            <li title="Resume"><a href="http://ryan.rawswift.com/resume/"><img src="icons/blogs.png" alt="" /></a></li>
+			<li title="Portfolio"><a href="http://ryan.rawswift.com/portfolio/"><img src="icons/block.png" alt="" /></a></li>
+        </ul>
+        <span class="jx-separator-left"></span>        
+		<div class="text-container"><a href="http://code.google.com/p/jixedbar/">jixedbar</a> - a <a href="http://jquery.com/">jQuery</a> fixed bar plugin.</div>
+        <ul class="jx-bar-button-right">
+			<li title="Feeds"><a href="#"><img src="icons/feed.png" alt="" /></a>
+                <ul>
+        		    <li><a href="http://ryan.rawswift.com/feed/"><img src="icons/feed-doc.png" title="Content Feed" />&nbsp;&nbsp;&nbsp;Content Feed</a></li>
+		            <li><a href="http://ryan.rawswift.com/comments/feed/"><img src="icons/ballon.png" title="Comment Feed" />&nbsp;&nbsp;&nbsp;Comment Feed</a></li>
+                </ul>
+			</li>
+        </ul>
+        <span class="jx-separator-right"></span>
+</div>
+
+</body>
+</html>
