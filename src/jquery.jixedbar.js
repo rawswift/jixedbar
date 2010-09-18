@@ -2,14 +2,14 @@
  * jixedbar - a jQuery fixed bar plugin.
  * http://code.google.com/p/jixedbar/
  * 
- * Version 0.0.4 (Beta)
+ * Version 0.0.5 (Development)
  * 
  * Copyright (c) 2009-2010 Ryan Yonzon, http://ryan.rawswift.com/
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  * 
- * Last update - August 16, 2010
+ * Last update - September 19, 2010
  */
 
 (function($) { // start jixedbar's anonymous function
@@ -431,7 +431,7 @@
 					});
 					$(this).find("img").each(function() {
 						$(this).attr("style", "filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);"); // show image
-					})
+					});
 				});
 			}
 			
@@ -611,12 +611,14 @@ jQuery.fn.checkCookie = function(cookie_name) {
   			if (cookie_start != -1) {
     			cookie_start = cookie_start + cookie_name.length + 1;
     			cookie_end = document.cookie.indexOf(";", cookie_start);
-    			if (cookie_end == -1) cookie_end = document.cookie.length
+    			if (cookie_end == -1) {
+    				cookie_end = document.cookie.length;
     				return true;
+    			}
 			}
   	}
 	return false;
-}
+};
 
 /**
  * Extract cookie value
@@ -626,7 +628,7 @@ jQuery.fn.extractCookieValue = function(value) {
 	     endOfCookie = document.cookie.length;
 	  }
 	  return unescape(document.cookie.substring(value, endOfCookie));
-}
+};
 
 /**
  * Read cookie
@@ -646,7 +648,7 @@ jQuery.fn.readCookie = function(cookie_name) {
 	           }
 	  }
 	  return (null);
-}	
+};
 
 /**
  * Generate random ID
@@ -658,6 +660,6 @@ jQuery.fn.genRandID = function() {
 		id += str.charAt(Math.floor(Math.random() * str.length));
 	}
     return id;
-}
+};
 
-// end jixedbar package
+// end jixedbar jquery plugin
