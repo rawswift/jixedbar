@@ -34,7 +34,7 @@
 					tooltipFadeSpeed: "slow", // tooltip fade effect
 					tooltipFadeOpacity: 0.8 // tooltip fade opacity effect
 				};
-			var options = $.extend(defaults, options); // extend options
+			var options = $.extend(defaults, options); // merge defaults and options object
 			/* IE6 detection method */
 			var ie6 = (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion) == 4 && navigator.appVersion.indexOf("MSIE 6.0") != -1);
 			/* var ie7 = window.XMLHttpRequest; // simple way to detect IE7 (see variable below) */
@@ -598,8 +598,33 @@
 			}; // end method construct
 			
 			/**
-			 * additional public methods here
+			 * additional public methods
 			 */
+			
+			// get jixedbar's options (variables)
+			this.getOptions = function() {
+				return options;
+			};
+			
+			// check if IE6
+			this.isIE6 = function() {
+				return ie6;  
+			};
+
+			// check if IE7
+			this.isIE7 = function() {
+				return ie7;
+			};
+			
+			// check if there are active button
+			this.hasActiveButton = function() {
+				return button_active;
+			};
+			
+			// return active button name
+			this.getActiveButtonName = function() {
+				return active_button_name;
+			};
 			
 		} // end jixedbar plugin method
 

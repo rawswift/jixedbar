@@ -1,5 +1,11 @@
 Version 0.0.5 (Branch) (September 19, 2010)
 
+- Added public methods: - September 19, 2010
+	- getOptions
+	- isIE6
+	- isIE7
+	- hasActiveButton
+	- getActiveButtonName
 - Main source revision: extendable jixedbar (Branch 0.0.5) - September 19, 2010
 - Branch development - Started on September 19, 2010
 
