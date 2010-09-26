@@ -8,7 +8,7 @@
 <!-- jixedbar starts here -->
 <link type="text/css" href="../themes/default/jx.stylesheet.css" rel="stylesheet" />
 <script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="../src/jquery.jixedbar.js"></script>
+<script type="text/javascript" src="../src/jquery.jixedbar.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 		$("#demo-bar").jixedbar();
@@ -27,11 +27,13 @@
 
 <h1><span style="color:#00CC33;">jixedbar</span> (0.0.5 Branch/Development) - a jQuery fixed bar plugin. <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; text-decoration:none; font-weight:normal;">(<a href="http://code.google.com/p/jixedbar/">http://code.google.com/p/jixedbar/</a>)</span></h1>
 
-<span style="color:#999;">Last update: September 19, 2010</span>
+<span style="color:#999;">Last update: September 21, 2010</span>
 
 <div id="rel-note" style="margin-top:10px;background-color:#F1FFD6;border:#eee solid 1px;padding-left:30px;padding-right:30px;">
 	<h2>Release Notes</h2>
 	<ul>
+		<li>Bug fix on windows resize. (for active menu and show/unhide (right) button)</li>		
+		<li>Added new public methods.</li>
 		<li>This release includes mostly Internet Explorer (IE) fixes. (IE6 and IE7 compatibility issues)</li>
 		<li>Compatibility tests using the top popular browsers in different OS. (see CHANGELOG for browser and OS list)</li>
 		<li>Also tested using IETester 0.4.4 (under Windows XP [SP2]) - Passed IE6 and IE7 tests.</li>
@@ -339,7 +341,7 @@ $("#sample-bar").jixedbar({
             <li title="Around The Web"><a href="#"><img src="icons/network.png" alt="Get Social" /></a>
                 <ul>
                     <li><a href="http://www.facebook.com/ryanyonzon"><img src="icons/facebook.png" title="Facebook" />&nbsp;&nbsp;&nbsp;Facebook</a></li>
-                    <li><a href="https://twitter.com/rawswift"><img src="icons/twitter.png" title="Twitter" />&nbsp;&nbsp;&nbsp;Twitter</a></li>
+                    <li><a href="http://twitter.com/rawswift"><img src="icons/twitter.png" title="Twitter" />&nbsp;&nbsp;&nbsp;Twitter</a></li>
                     <li><a href="http://www.flickr.com/photos/ryanyonzon/"><img src="icons/pictures.png" title="Flickr" />&nbsp;&nbsp;&nbsp;Flickr</a></li>
                     <li><a href="http://ph.linkedin.com/in/ryanyonzon"><img src="icons/card.png" title="Linkedin" />&nbsp;&nbsp;&nbsp;Linkedin</a></li>
                 </ul>

@@ -9,7 +9,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  * 
- * Last update - September 19, 2010
+ * Last update - September 21, 2010
  */
 
 (function($) { // start jixedbar's anonymous function
@@ -41,6 +41,7 @@
 			var ie7 = (document.all && !window.opera && window.XMLHttpRequest); // ...but I guess this is a much more accurate method
 			var button_active = false; // active button flag
 			var active_button_name = ""; // name of current active button
+			var element_obj; // reference to bar's element
 		
 			/**
 			 * public methods
@@ -56,6 +57,8 @@
 					var centerScreen = (fullScreen/2) * (1); // get screen center
 					var hideBar = false; // default bar hide/show status
 
+					element_obj = obj; // set bar's element object for public method use					
+					
 					if ($(this).checkCookie("JXID")) { // check if cookie already exists
 						if ($(this).readCookie("JXHID") == "true") {
 							this.hideBar = true; // hide bar
@@ -93,7 +96,7 @@
 						} else if ($.browser.msie && ie7) {
 							$("#jx-hid-con-id").css({"width": "40px", "float": "right"}); // fix hide container width to prevent float drop issue on IE7
 						}
-
+						
 					/* check what position should be the arrow indicator will be */
 					if (defaults.showOnTop) {
 						hideIndicator = "jx-hide-top"; // on the top
@@ -108,7 +111,7 @@
 					// insert hide button separator and CSS class
 					$("<span />").attr("id", "jx-hid-sep-id").insertAfter("#jx-hid-con-id");
 					$("#jx-hid-sep-id").addClass("jx-hide-separator");
-					
+		
 					// add click event on hide button
 					$("#jx-hid-btn-id").parent().click(function() {
 						$("#jx-menu-con-id").fadeOut();
@@ -265,7 +268,21 @@
 							if (active_button_name != "") { // check if we have an active button (menu button)
 								$("#jx-menu-con-id").fadeIn(); // if we have then do fade in effect
 							}
+
+							// re-set unhide/show button position
+							$("#jx-uhid-con-id").css({
+								"margin-left": ($(obj).offset().left + $(obj).width()) - $("#jx-uhid-con-id").width() // calculate the show/unhide left margin/position
+							});
+							
+							// re-set menu container position
+							if (button_active) {
+								$("#jx-menu-con-id").css({
+									"margin-left": $("#" + active_button_name).parent().offset().left // calculate menu container position by setting its left margin
+								});
+							}
+							
 						});
+						
 						return false; // return false to prevent any unnecessary click action
 					});
 
@@ -337,7 +354,7 @@
 								// fix tooltip wrapper relative to the associated button
 								lft_pad = parseInt($(this).css("padding-left"));
 								$("#" + barTooltipWrapperID).css({
-									"margin-left": ($(this).offset().left - ($("#" + barTooltipID).width() / 2)) + ($(this).width()/2) + lft_pad // calculate left margin
+									"margin-left": ($(this).offset().left - ($("#" + barTooltipID).width() / 2)) + ($(this).width()/2) + lft_pad // calculate position (left margin)
 								});
 								
 								/* check for active buttons; tooltip behavior */
@@ -452,6 +469,18 @@
 							var centerScreen = (screenWidth / 2) * (1); // get current screen center
 							var marginLeft = centerScreen - ($(obj).width() / 2); // re-calculate and adjust bar's position
 							$(obj).css({"margin-left": marginLeft}); // do it!
+							
+							// set unhide/show button
+							$("#jx-uhid-con-id").css({
+								"margin-left": ($(obj).offset().left + $(obj).width()) - $("#jx-uhid-con-id").width()
+							});
+							
+							if (button_active) { // check if we have an active button
+								$("#jx-menu-con-id").css({
+									"margin-left": $("#" + active_button_name).parent().offset().left // fix menu position on resize
+								});
+							}
+
 						}
 					);
 					
@@ -467,7 +496,7 @@
 					// create menu ID
 					i = 1;
 					$("li", obj).find("ul").each(function() {
-						$(this).attr("id", "nav-" + i);
+						$(this).attr("id", "nav" + i);
 						$(this).parent().find("a:first").attr("href", "#"); // replace href attribute
 						$(this).parent().find("a:first").attr("name", "nav" + i); // replace href attribute				
 
@@ -510,7 +539,9 @@
 								
 								button_active = false; // remove button's active state
 								active_button_name = "";
+								
 								$(this).blur(); // unfocus link/href
+								
 							} else {
 								if (defaults.showOnTop) { // is bar's on the top position?
 									buttonIndicator = "jx-arrow-up";
@@ -570,6 +601,7 @@
 								
 								button_active = true; // change button's active state
 								active_button_name = $(this).attr("name"); // save button name for future reference (e.g. remove active state)
+								
 								$(this).blur(); // unfocus link/href
 								
 								$("#jx-menu-con-id").fadeIn(defaults.menuFadeSpeed); // show menu container and its item(s)
@@ -586,10 +618,12 @@
 							$(this).find("a:first").click();
 							return false;
 						} else if ($(this).parent().attr("id") == "jx-hid-con-id") {
-							// do nothing
-							return false;
+							return false; // do nothing
 						}
-						window.location = $(this).find("a:first").attr("href"); // emulate normal click event action (e.g. follow link)
+						
+						if ($("a", this).exists()) { // check if there are A tag (href) to follow
+							window.location = $(this).find("a:first").attr("href"); // emulate normal click event action (e.g. follow link)
+						}
 						return false;
 					});
 					
@@ -625,6 +659,40 @@
 			this.getActiveButtonName = function() {
 				return active_button_name;
 			};
+			
+			// get tooltip container object
+			this.getTooltipObject = function() {
+				return $("#jx-ttip-con-id");
+			};
+			
+			// create object container
+			this.createObjectContainer = function(name) {
+				name = typeof(name) != 'undefined' ? name : "jx-obj-con-id"; // default object container name
+				// create custom object container
+				$("<div />").attr("id", name).appendTo("body"); // create div element and append in html body
+				$("#" + name).css({ // CSS for tooltip container (invisible to viewer(s))
+					"height": "auto",
+					"margin-left": "0px",
+					"width": "100%", // use entire width
+					"overflow": constants["constOverflow"],
+					"position": pos
+				});
+				
+				// set custom object container: top or bottom
+				if (defaults.showOnTop) { // show on top?
+					$("#" + name).css({
+						"margin-top": $(element_obj).height() + 6, // put spacing between tooltip container and fixed bar
+						"top": constants["constBottom"]
+					});
+				} else { // else bottom
+					$("#" + name).css({
+						"margin-bottom": $(element_obj).height() + 6, // put spacing between tooltip container and fixed bar
+						"bottom": constants["constBottom"]
+					});
+				}
+				return $("#" + name); // return object reference
+			};
+			
 			
 		} // end jixedbar plugin method
 

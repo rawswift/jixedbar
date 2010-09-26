@@ -1,5 +1,10 @@
-Version 0.0.5 (Branch) (September 19, 2010)
+Version 0.0.5 (Branch) (September 21, 2010)
 
+- Added new public methods: - September 21, 2010
+	- getTooltipObject
+	- createObjectContainer	
+- Fix menu container position on window resize event - September 20, 2010
+- Fix unhide/show button's position on window resize event - September 20, 2010
 - Added public methods: - September 19, 2010
 	- getOptions
 	- isIE6
